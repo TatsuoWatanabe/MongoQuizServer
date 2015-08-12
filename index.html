@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Ukulele Quiz</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="scripts/lib/jquery.js"></script>
+    <script src="scripts/lib/jquery.tempAddClass.js"></script>
+    <script src="scripts/lib/jquery.ajaxLoaderImg.js"></script>
+    <script src="scripts/lib/underscore.js"></script>
+    <script src="scripts/lib/backbone.js"></script>
+    <script src="scripts/lib/backbone.localStorage.js"></script>
+    <script src="http://twitter.github.com/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>
+    <script data-main="scripts/app" src="scripts/requireJs/require.js"></script>
+</head>
+
+<body>
+    <div id="quizapp">
+        <h1 id="main-title"></h1>
+
+        <section id="main">
+            <p><button id="btn-start" type="button">Start Quiz</button></p>
+            <div id="quiz-display">
+                <h3 id="welcome-display"></h3>
+            </div>
+
+            <ul id="choices-list"></ul>
+        </section>
+
+        <footer id="bottom-bar">
+            <span id="point-display"></span>
+            <div id="langage-selector"></div>
+        </footer>
+    </div>
+
+    <div id="instructions">
+        Ukulele Quiz
+    </div>
+
+    <!-- Templates -->
+    <script type="text/template" id="header-template">
+        {{#ja}}楽しいウクレレクイズ{{/ja}}
+        {{#en}}Fun Ukulele Quiz{{/en}}
+    </script>
+
+    <script type="text/template" id="welcome-template">
+        {{#ja}}始めよう! ウクレレクイズ!{{/ja}}
+        {{#en}}Let's Start! Ukulele Quiz!{{/en}}
+    </script>
+
+    <script type="text/template" id="choices-template">
+        {{#choices}}
+            <li><button data-index="{{index}}">{{body}}</button></li>
+        {{/choices}}
+    </script>
+
+    <script type="text/template" id="lang-template">
+        {{#ja}}
+            <label class="lang">ja</label>
+            <a href="#/en" class="lang">en</a>
+        {{/ja}}
+        {{#en}}
+            <a href="#/ja" class="lang">ja</a>
+            <label class="lang">en</label>
+        {{/en}}
+    </script>
+
+    <script type="text/template" id="result-template">
+        {{#ja}}<p>合計ポイントは {{total}} ポイント でした!</p>{{/ja}}
+        {{#en}}<p>Finally, You got {{total}} points!</p>{{/en}}
+        <div class="bs-callout bs-callout-info">
+            {{#isPerfect}}
+                {{#ja}}<p>すごい!パーフェクト！</p>{{/ja}}
+                {{#en}}<p>It's great! You are perfect!</p>{{/en}}
+            {{/isPerfect}}
+            {{^isPerfect}}
+                <h4>{{#ja}}解説{{/ja}}{{#en}}explanation{{/en}}</h4>
+                <p>{{explanation}}</p>
+            {{/isPerfect}}
+        </div>
+    </script>
+</body>
+</html>

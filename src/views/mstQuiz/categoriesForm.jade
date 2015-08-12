@@ -1,8 +1,0 @@
-﻿mixin categoriesForm(categories, checkedIds)
-    each category, index in categories
-      -var isChecked = checkedIds.indexOf(category.id) > -1
-
-      div.checkbox.category
-        label
-          input(type="checkbox" name="categories[]" value="#{category._id}" checked=isChecked)
-          | #{category.name_ja} / #{category.name_en}

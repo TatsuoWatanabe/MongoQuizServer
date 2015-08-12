@@ -1,0 +1,161 @@
+﻿html,
+body {
+    margin : 0;
+    padding: 0;
+}
+
+body {
+    font       : 14px Apple TP,Hiragino Kaku Gothic Pro,"ヒラギノ角ゴ Pro W3","メイリオ",Meiryo,"ＭＳ Ｐゴシック",Helvetica Neue,Helvetica,Arial,sans-serif;
+    line-height: 1.4em;
+    background : #eeeeee;
+    color      : #333333;
+    width      : 70%;
+    min-width  : 520px;
+    margin     : 0 auto;
+}
+
+#quizapp {
+    background   : #fff;
+    padding      : 20px;
+    margin-bottom: 40px;
+    box-shadow   : rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    border-radius: 0 0 5px 5px;
+    transition   : background-color 0.15s linear;
+}
+
+#quizapp.correct {
+    background-color: #def0ff !important;
+}
+
+#quizapp.incorrect {
+    background-color: #f7a091 !important;
+}
+
+#quizapp h1 {
+    font-size  : 36px;
+    font-weight: bold;
+    text-align : center;
+    padding    : 0 0 10px 0;
+}
+
+#quiz-display {
+    font-size  : 1.2rem;
+    line-height: 1.7rem;
+}
+
+#quiz-display, #choices-list {
+    background   : #fff;
+    padding      : 20px;
+    margin       : 20px 0px;
+    box-shadow   : rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    border-radius: 0 0 5px 5px;
+}
+
+#choices-list {
+    display   : none;
+    list-style: none;
+}
+
+#choices-list li {
+    padding      : 18px 20px 18px 0;
+    position     : relative;
+    font-size    : 24px;
+    border-bottom: 1px solid #cccccc;
+}
+
+#choices-list li button {
+    width    : 100%;
+    font-size: 2rem;
+}
+
+#bottom-bar {
+    font-size    : 1.2em;
+    margin       : 0 -20px -20px -20px;
+    overflow     : hidden;
+    color        : #555555;
+    background   : #f1fbe2;
+    border-top   : 1px solid #ededed;
+    padding      : 0 20px;
+    line-height  : 37px;
+    border-radius: 0 0 5px 5px;
+}
+
+#langage-selector .lang, #point-display {
+    font-size      : 0.9rem;
+    line-height    : 20px;
+    text-decoration: none;
+    background     : rgba(0, 0, 0, 0.1);
+    color          : #555555;
+    margin-top     : 8px;
+    margin-bottom  : 8px;
+    padding        : 3px 30px 1px;
+    border-radius  : 12px;
+    box-shadow     : rgba(0, 0, 0, 0.2) 0 -1px 0 0;
+}
+
+#langage-selector a.lang {
+    cursor    : pointer;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 0 0;
+}
+
+#langage-selector a.lang:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+#langage-selector a.lang:active {
+    position: relative;
+    top     : 1px;
+}
+
+#langage-selector label.lang {
+    font-weight: bold;
+    cursor     : default;
+}
+
+#point-display {
+    font-size:1.3rem;
+    float: right;
+}
+
+#instructions {
+    margin     : 10px auto;
+    color      : #777777;
+    text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
+    text-align : center;
+}
+
+#instructions a {
+    color: #336699;
+}
+
+#credits {
+    margin     : 30px auto;
+    color      : #999;
+    text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
+    text-align : center;
+}
+
+#credits a {
+    color: #888;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-info {
+    border-left-color: #1b809e;
+}
+
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.bs-callout-info h4 {
+    color: #1b809e;
+}
