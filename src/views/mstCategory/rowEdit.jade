@@ -1,0 +1,14 @@
+﻿include ../base/textbox.jade
+include ../base/editButtons.jade
+
+-var doc    = params.doc
+-var errors = doc.errors || {}
+
+td
+  +editButtons(doc._id, doc.cancelUrl, doc.execUrl, doc.deleteUrl, doc.isNew)
+td
+  +textbox('text'    , doc.name_ja, errors.name_ja)(name="name_ja")
+td
+  +textbox('text'    , doc.name_en, errors.name_en)(name="name_en")
+td
+  +textbox('textarea', doc.note   , errors.note   )(name="note")

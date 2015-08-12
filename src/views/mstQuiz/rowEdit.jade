@@ -1,0 +1,42 @@
+﻿include ../base/textbox.jade
+include ../base/panelBlock.jade
+include ../base/editButtons.jade
+include choiceRowEdit.jade
+include categoriesForm.jade
+
+-var doc    = params.doc
+-var errors = doc.errors || {}
+
+td
+  +editButtons(doc._id, doc.cancelUrl, doc.execUrl, doc.deleteUrl, doc.isNew)
+td
+  // --- body ---
+  +panelBlock('body')(class='panel-primary panel-mini')
+    +panelBlock('body_ja')(class='panel-info panel-mini')
+      +textbox('textarea', doc.body_ja, errors.body_ja)(name="body_ja")
+    +panelBlock('body_en')(class='panel-success panel-mini')
+      +textbox('textarea', doc.body_en, errors.body_en)(name="body_en")
+
+  // --- chices ---
+  +panelBlock('choices')(class='panel-mini')
+    ul.list-group
+      if doc.choices.length
+        each choice, index in doc.choices
+          +choiceRowEdit(choice, index)
+      else
+        +choiceRowEdit(params.newChoiceDoc, 0)
+      +choiceRowEdit(params.newChoiceDoc, 0, 'disabled')(class="hide")
+    div
+      button(id="btnAddChoice" type="button" class="btn btn-default") add
+
+  // --- categories ---
+  +panelBlock('categories')(class='panel-warning panel-mini')
+    +categoriesForm(params.categories, params.checkedIds)
+
+  // --- explanation ---
+  +panelBlock('explanation')(class='panel-primary panel-mini')
+    +panelBlock('explanation_ja')(class='panel-info panel-mini')
+      +textbox('textarea', doc.explanation_ja, errors.explanation_ja)(name="explanation_ja")
+    +panelBlock('explanation_en')(class='panel-success panel-mini')
+      +textbox('textarea', doc.explanation_en, errors.explanation_en)(name="explanation_en")
+    

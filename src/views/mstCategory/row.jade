@@ -1,0 +1,14 @@
+﻿include ../base/editButton.jade
+include ../base/insertButton.jade
+
+mixin row(doc)
+  if !doc.isNew
+    td
+      +editButton(doc.editUrl)
+    td=doc.name_ja
+    td=doc.name_en
+    td=doc.note
+  else
+    td
+      +insertButton(doc.insertUrl)
+    td(colspan=3)

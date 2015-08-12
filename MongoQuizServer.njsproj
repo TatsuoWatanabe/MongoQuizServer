@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>MongoQuizServer</Name>
+    <RootNamespace>MongoQuizServer</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>f04454d0-12ac-4d86-bcc1-f8afd74796cf</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <StartWebBrowser>True</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <NodejsPort>1337</NodejsPort>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <EnableTypeScript>true</EnableTypeScript>
+    <StartWebBrowser>true</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="package.json" />
+    <Content Include="public\scripts\scriptForMst.js.map" />
+    <Content Include="public\scripts\scriptForMstQuiz.js.map" />
+    <Content Include="public\styles\main.css" />
+    <Content Include="README.md" />
+    <Content Include="src\controllers\ApiController.js.map" />
+    <Content Include="src\controllers\LoginController.js.map" />
+    <Content Include="src\controllers\MstCategoryController.js.map" />
+    <Content Include="src\controllers\MstQuizController.js.map" />
+    <Content Include="src\lib\Pager.js.map" />
+    <Content Include="src\models\Admin.js.map" />
+    <Content Include="src\models\Category.js.map" />
+    <Content Include="src\models\ModelBase.js.map" />
+    <Content Include="src\models\Quiz.js.map" />
+    <Content Include="src\Routes.js.map" />
+    <Content Include="src\views\base\editButton.jade" />
+    <Content Include="src\views\base\editButtons.jade" />
+    <Content Include="src\views\base\insertButton.jade" />
+    <Content Include="src\views\base\pagination.jade" />
+    <Content Include="src\views\base\panelBlock.jade" />
+    <Content Include="src\views\base\templateForMst.jade" />
+    <Content Include="src\views\base\textbox.jade" />
+    <Content Include="src\views\login\index.jade" />
+    <Content Include="src\views\main.jade" />
+    <Content Include="src\views\mstCategory\index.jade" />
+    <Content Include="src\views\mstCategory\renderRow.jade" />
+    <Content Include="src\views\mstCategory\row.jade" />
+    <Content Include="src\views\mstCategory\rowEdit.jade" />
+    <Content Include="src\views\mstQuiz\categoriesForm.jade" />
+    <Content Include="src\views\mstQuiz\choiceRow.jade" />
+    <Content Include="src\views\mstQuiz\choiceRowEdit.jade" />
+    <Content Include="src\views\mstQuiz\index.jade" />
+    <Content Include="src\views\mstQuiz\renderRow.jade" />
+    <Content Include="src\views\mstQuiz\row.jade" />
+    <Content Include="src\views\mstQuiz\rowEdit.jade" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="public\" />
+    <Folder Include="public\sample_app\" />
+    <Folder Include="public\scripts\" />
+    <Folder Include="public\styles\" />
+    <Folder Include="src\" />
+    <Folder Include="src\controllers\" />
+    <Folder Include="src\lib\" />
+    <Folder Include="src\models\" />
+    <Folder Include="src\typings\" />
+    <Folder Include="src\typings\node\" />
+    <Folder Include="src\views\" />
+    <Folder Include="src\views\base\" />
+    <Folder Include="src\views\login\" />
+    <Folder Include="src\views\mstCategory\" />
+    <Folder Include="src\views\mstQuiz\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="public\scripts\jquery.ajaxLoaderImg.js" />
+    <Compile Include="public\scripts\scriptForMst.js" />
+    <Compile Include="public\scripts\scriptForMstQuiz.js" />
+    <Compile Include="src\controllers\ApiController.js" />
+    <Compile Include="src\controllers\LoginController.js" />
+    <Compile Include="src\controllers\MstCategoryController.js" />
+    <Compile Include="src\controllers\MstQuizController.js" />
+    <Compile Include="src\lib\Pager.js" />
+    <Compile Include="src\models\Admin.js" />
+    <Compile Include="src\models\Category.js" />
+    <Compile Include="src\models\ModelBase.js" />
+    <Compile Include="src\models\Quiz.js" />
+    <Compile Include="src\Routes.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="public\scripts\scriptForMst.ts" />
+    <TypeScriptCompile Include="public\scripts\scriptForMstQuiz.ts" />
+    <TypeScriptCompile Include="src\controllers\ApiController.ts" />
+    <TypeScriptCompile Include="src\controllers\LoginController.ts" />
+    <TypeScriptCompile Include="src\controllers\MstCategoryController.ts" />
+    <TypeScriptCompile Include="src\controllers\MstQuizController.ts" />
+    <TypeScriptCompile Include="src\lib\Pager.ts" />
+    <TypeScriptCompile Include="src\models\Admin.ts" />
+    <TypeScriptCompile Include="src\models\Category.ts" />
+    <TypeScriptCompile Include="src\models\ModelBase.ts" />
+    <TypeScriptCompile Include="src\models\Quiz.ts" />
+    <TypeScriptCompile Include="src\Routes.ts" />
+    <TypeScriptCompile Include="src\typings\body-parser.d.ts" />
+    <TypeScriptCompile Include="src\typings\express-session.d.ts" />
+    <TypeScriptCompile Include="src\typings\express.d.ts" />
+    <TypeScriptCompile Include="src\typings\jquery.d.ts" />
+    <TypeScriptCompile Include="src\typings\moment-node.d.ts" />
+    <TypeScriptCompile Include="src\typings\moment.d.ts" />
+    <TypeScriptCompile Include="src\typings\mongoose-paginate.d.ts" />
+    <TypeScriptCompile Include="src\typings\mongoose.d.ts" />
+    <TypeScriptCompile Include="src\typings\node\node.d.ts" />
+    <TypeScriptCompile Include="src\typings\tsd.d.ts" />
+    <TypeScriptCompile Include="src\typings\underscore.d.ts" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

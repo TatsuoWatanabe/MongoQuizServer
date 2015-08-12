@@ -1,0 +1,18 @@
+﻿include ../base/panelBlock.jade
+
+mixin choiceRow(doc)
+  li.list-group-item.choice
+    div.row
+      div.col-md-12
+        +panelBlock('body_ja')(class='panel-info panel-mini')
+          | #{doc.body_ja}
+    div.row
+      div.col-md-8
+        +panelBlock('body_en')(class='panel-success panel-mini')
+          | #{doc.body_en}
+      div.col-md-2
+        +panelBlock('point_max')(class='panel-primary panel-mini')
+          | #{doc.point_max}
+      div.col-md-2
+        +panelBlock('point_min')(class='panel-danger panel-mini')
+          | #{doc.point_min}

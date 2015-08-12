@@ -1,0 +1,19 @@
+﻿extends ../main.jade
+include pagination.jade
+
+block script
+  script(src='/scripts/scriptForMst.js')
+block title
+  title #{params.title}
+block body
+  nav.navbar.navbar-default
+    div.container-fluid
+      span.navbar-brand Welcome to #{params.title}
+  div(style="padding: 0px 20px")
+    +pagination(params.pager)
+    form
+      table.mst.table.table-bordered.table-striped
+        thead
+          block thead
+        tbody
+          block tbody
