@@ -3,6 +3,7 @@ var ApiController = (function () {
     function ApiController() {
     }
     ApiController.index = function (req, res) {
+        res.header('Access-Control-Allow-Origin', '*');
         var limit = Number(req.query.limit) || 10;
         var query = Quiz.model.find({}).limit(limit).populate({ path: 'categories' });
         query.exec(function (err, results) {

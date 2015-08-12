@@ -10,6 +10,8 @@ class ApiController {
   }
 
   public static index(req: express.Request, res: express.Response) {
+    res.header('Access-Control-Allow-Origin', '*');
+
     var limit = Number(req.query.limit) || 10;
     var query = Quiz.model.find({})
                           .limit(limit)
