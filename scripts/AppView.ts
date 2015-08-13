@@ -71,9 +71,12 @@ class AppView extends Backbone.View<Backbone.Model> {
     this.resetResults();
     $.ajax(url, {
       data: { limit: 10 }
-    }).done((data) => { this.quizzes = data;   })
-      .fail(()     => { this.$btnStart.show(); })
-      .then(()     => { this.nextQuiz();       });
+    }).done((data) => {
+      this.quizzes = data;
+      this.nextQuiz();
+    }).fail(() => {
+      this.$btnStart.show();
+    });
   }
 
   private resetResults() {

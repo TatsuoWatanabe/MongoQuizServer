@@ -78,10 +78,9 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
                 data: { limit: 10 }
             }).done(function (data) {
                 _this.quizzes = data;
+                _this.nextQuiz();
             }).fail(function () {
                 _this.$btnStart.show();
-            }).then(function () {
-                _this.nextQuiz();
             });
         };
         AppView.prototype.resetResults = function () {

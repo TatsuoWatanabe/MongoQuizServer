@@ -20,8 +20,6 @@
   <ItemGroup>
     <Content Include="css\main.css" />
     <Content Include="index.html" />
-    <Content Include="scripts\app.js" />
-    <Content Include="scripts\AppView.js" />
     <Content Include="scripts\lib\backbone.js" />
     <Content Include="scripts\lib\backbone.localStorage.js" />
     <Content Include="scripts\lib\jquery.ajaxLoaderImg.js" />
@@ -30,15 +28,9 @@
     <Content Include="scripts\lib\underscore.js" />
     <Content Include="scripts\requireJs\r.js" />
     <Content Include="scripts\requireJs\require.js" />
-    <Content Include="scripts\Router.js" />
-    <Content Include="scripts\Trace.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="scripts\app.js.map" />
-    <Content Include="scripts\AppView.js.map" />
-    <Content Include="scripts\Router.js.map" />
-    <Content Include="scripts\Trace.js.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -89,6 +81,8 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
+    <TypeScriptTarget>ES6</TypeScriptTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
