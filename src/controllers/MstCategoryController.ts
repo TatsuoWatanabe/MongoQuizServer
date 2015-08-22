@@ -28,7 +28,8 @@ class MstCategoryController {
 
       res.render('mstCategory/index', {
         params: {
-          title      : 'Category master',
+          title      : 'Category Master',
+          name       : 'category',
           pager      : pager,
           newDocument: Category.createDocument()
         }

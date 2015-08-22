@@ -19,6 +19,7 @@ var MstQuizController = (function () {
                 res.render('mstQuiz/index', {
                     params: {
                         title: 'Quiz master',
+                        name: 'quiz',
                         pager: pager,
                         newDocument: Quiz.createDocument()
                     }

@@ -16,7 +16,8 @@ var MstCategoryController = (function () {
             var pager = new Pager(results, pageCount, itemCount, paginateOption, paginateDefaults);
             res.render('mstCategory/index', {
                 params: {
-                    title: 'Category master',
+                    title: 'Category Master',
+                    name: 'category',
                     pager: pager,
                     newDocument: Category.createDocument()
                 }

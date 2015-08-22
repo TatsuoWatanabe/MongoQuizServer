@@ -1,11 +1,14 @@
 ﻿extends ../main.jade
 include ../base/textbox.jade
+include ../base/navbarHeader.jade
  
 block script
   script(src='/scripts/scriptForMst.js')
 block title
   title #{params.title}
 block body
+  if (params.isLoggedin)
+    +navbarHeader(params.name)
   div.jumbotron.text-center
     h1= params.title
     if (params.isLoggedin)
@@ -15,12 +18,13 @@ block body
     else
       h6 Please login for our pleasure.
   div.container
-    form(method='post', action='/login', style="width: 40%; min-width: 20em;")
-      div.form-group
-        label Email address
-        +textbox('text')(name='email', placeholder='Email')
-      div.form-group
-        label Password
-        +textbox('password')(name='password', placeholder='Password')
-      button.btn.btn-primary(type='submit') Login
+    if (!params.isLoggedin)
+      form(method='post', action='/login', style="width: 40%; min-width: 20em;")
+        div.form-group
+          label Email address
+          +textbox('text')(name='email', placeholder='Email')
+        div.form-group
+          label Password
+          +textbox('password')(name='password', placeholder='Password')
+        button.btn.btn-primary(type='submit') Login
 

@@ -21,7 +21,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
@@ -40,19 +40,10 @@
     <Content Include="public\scripts\scriptForMstQuiz.js.map" />
     <Content Include="public\styles\main.css" />
     <Content Include="README.md" />
-    <Content Include="src\controllers\ApiController.js.map" />
-    <Content Include="src\controllers\LoginController.js.map" />
-    <Content Include="src\controllers\MstCategoryController.js.map" />
-    <Content Include="src\controllers\MstQuizController.js.map" />
-    <Content Include="src\lib\Pager.js.map" />
-    <Content Include="src\models\Admin.js.map" />
-    <Content Include="src\models\Category.js.map" />
-    <Content Include="src\models\ModelBase.js.map" />
-    <Content Include="src\models\Quiz.js.map" />
-    <Content Include="src\Routes.js.map" />
     <Content Include="src\views\base\editButton.jade" />
     <Content Include="src\views\base\editButtons.jade" />
     <Content Include="src\views\base\insertButton.jade" />
+    <Content Include="src\views\base\navbarHeader.jade" />
     <Content Include="src\views\base\pagination.jade" />
     <Content Include="src\views\base\panelBlock.jade" />
     <Content Include="src\views\base\templateForMst.jade" />
@@ -92,16 +83,6 @@
     <Compile Include="public\scripts\jquery.ajaxLoaderImg.js" />
     <Compile Include="public\scripts\scriptForMst.js" />
     <Compile Include="public\scripts\scriptForMstQuiz.js" />
-    <Compile Include="src\controllers\ApiController.js" />
-    <Compile Include="src\controllers\LoginController.js" />
-    <Compile Include="src\controllers\MstCategoryController.js" />
-    <Compile Include="src\controllers\MstQuizController.js" />
-    <Compile Include="src\lib\Pager.js" />
-    <Compile Include="src\models\Admin.js" />
-    <Compile Include="src\models\Category.js" />
-    <Compile Include="src\models\ModelBase.js" />
-    <Compile Include="src\models\Quiz.js" />
-    <Compile Include="src\Routes.js" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />

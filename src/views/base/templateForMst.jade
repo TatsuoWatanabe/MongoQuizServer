@@ -1,14 +1,14 @@
 ﻿extends ../main.jade
 include pagination.jade
+include navbarHeader.jade
 
 block script
   script(src='/scripts/scriptForMst.js')
 block title
   title #{params.title}
 block body
-  nav.navbar.navbar-default
-    div.container-fluid
-      span.navbar-brand Welcome to #{params.title}
+  +navbarHeader(params.name)
+
   div(style="padding: 0px 20px")
     +pagination(params.pager)
     form
