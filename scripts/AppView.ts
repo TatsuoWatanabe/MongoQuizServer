@@ -13,10 +13,12 @@ class AppView extends Backbone.View<Backbone.Model> {
   private $choicesList  = $('#choices-list');
   private $btnStart     = $('#btn-start');
   private mainApiPath   = 'http://mongoquizserver.herokuapp.com/api';
-  private apiPaths = {
-    'tatsuowatanabe.github.io': this.mainApiPath,
-    'localhost'               : '/api'
-  };
+  private apiPaths = (() => {
+    var obj = {};
+    obj['tatsuowatanabe.github.io'] = this.mainApiPath;
+    obj[location.host] = location.protocol + '//' + location.host + '/api';
+    return obj;
+  })();
   private quizzes       = [];
   private currentQuiz: any;
   private results = {
@@ -34,7 +36,6 @@ class AppView extends Backbone.View<Backbone.Model> {
 
   constructor(options?: Backbone.ViewOptions<Backbone.Model>) {
     super(options);
-    
     $.ajaxSetup({
       beforeSend: () => { $.ajaxLoaderImg.fadeIn();  },
       complete  : () => { $.ajaxLoaderImg.fadeOut(); }
@@ -66,7 +67,10 @@ class AppView extends Backbone.View<Backbone.Model> {
   }
 
   private startQuiz() {
-    var url = this.apiPaths[location.hostname] || this.mainApiPath;
+
+    console.log(this.apiPaths);
+
+    var url = this.apiPaths[location.host] || this.mainApiPath;
     this.$btnStart.hide();
     this.resetResults();
     $.ajax(url, {

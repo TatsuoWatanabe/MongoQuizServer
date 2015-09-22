@@ -17,10 +17,12 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
             this.$choicesList = $('#choices-list');
             this.$btnStart = $('#btn-start');
             this.mainApiPath = 'http://mongoquizserver.herokuapp.com/api';
-            this.apiPaths = {
-                'tatsuowatanabe.github.io': this.mainApiPath,
-                'localhost': '/api'
-            };
+            this.apiPaths = (function () {
+                var obj = {};
+                obj['tatsuowatanabe.github.io'] = _this.mainApiPath;
+                obj[location.host] = location.protocol + '//' + location.host + '/api';
+                return obj;
+            })();
             this.quizzes = [];
             this.results = {
                 total: 0,
@@ -71,7 +73,8 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
         };
         AppView.prototype.startQuiz = function () {
             var _this = this;
-            var url = this.apiPaths[location.hostname] || this.mainApiPath;
+            console.log(this.apiPaths);
+            var url = this.apiPaths[location.host] || this.mainApiPath;
             this.$btnStart.hide();
             this.resetResults();
             $.ajax(url, {
