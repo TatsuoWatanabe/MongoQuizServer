@@ -15,8 +15,18 @@
   });
 
   $('table.mst').on('click', 'button.choice-delete', (evt) => {
-    var $btn       = $(evt.target);
+    var $btn = $(evt.target);
     $btn.closest('li').remove();
+  });
+
+  /* panel-collapse */
+  $(document).on('click', '.panel-heading', (e) => {
+    var $head  = $(e.target);
+    var $panel = $head.closest('.panel');
+    var $body  = $panel.children('.panel-body');
+    if ($panel.is('.panel-collapse')) {
+      $body.collapse('toggle');
+    }
   });
   
 });

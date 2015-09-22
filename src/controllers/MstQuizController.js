@@ -18,7 +18,7 @@ var MstQuizController = (function () {
                 var pager = new Pager(popDocs, pageCount, itemCount, paginateOption, paginateDefaults);
                 res.render('mstQuiz/index', {
                     params: {
-                        title: 'Quiz master',
+                        title: 'Quiz Master',
                         name: 'quiz',
                         pager: pager,
                         newDocument: Quiz.createDocument()

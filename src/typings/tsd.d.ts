@@ -7,3 +7,4 @@
 /// <reference path="moment.d.ts" />
 /// <reference path="moment-node.d.ts" />
 /// <reference path="body-parser.d.ts" />
+/// <reference path="bootstrap.d.ts" />

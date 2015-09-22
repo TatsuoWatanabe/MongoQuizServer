@@ -1,7 +1,7 @@
-﻿mixin panelBlock(title)
-  div.panel.panel-default&attributes(attributes)=name
+﻿mixin panelBlock(title, bodyClasses)
+  div.panel.panel-default&attributes(attributes)
     div.panel-heading
       label #{title}
-    div.panel-body
+    div.panel-body(class=bodyClasses)
       if block
           block

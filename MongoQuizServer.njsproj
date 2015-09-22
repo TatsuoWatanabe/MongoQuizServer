@@ -40,6 +40,7 @@
     <Content Include="public\scripts\scriptForMstQuiz.js.map" />
     <Content Include="public\styles\main.css" />
     <Content Include="README.md" />
+    <Content Include="src\typings\bootstrap.d.ts" />
     <Content Include="src\views\base\editButton.jade" />
     <Content Include="src\views\base\editButtons.jade" />
     <Content Include="src\views\base\insertButton.jade" />

@@ -40,4 +40,6 @@ li.choice:nth-child(even) { background: #f1dbe4; }
 .panel.panel-mini                { margin : 5px 0px 0px 0px; }
 .panel.panel-mini>.panel-heading { padding: 5px 0px 0px 5px; }
 .panel.panel-mini>.panel-body    { padding: 5px; }
-/* --------- */
+
+/* panel-collapse */
+.panel-collapse>.panel-heading { cursor: pointer}

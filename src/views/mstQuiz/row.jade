@@ -9,27 +9,27 @@ mixin row(doc)
       +editButton(doc.editUrl)
     td
       // --- body ---
-      +panelBlock('body')(class='panel-primary panel-mini')
+      +panelBlock('body', 'collapse in')(class='panel-primary panel-mini panel-collapse')
         +panelBlock('body_ja')(class='panel-info panel-mini')
           | #{doc.body_ja}?
         +panelBlock('body_en')(class='panel-success panel-mini')
           | #{doc.body_en ? doc.body_en  + '?' : ''}
 
       // --- chices ---
-      +panelBlock('choices')(class='panel-mini')
+      +panelBlock('choices', 'collapse')(class='panel-mini panel-collapse')
         if doc.choices.length
           ul.list-group
             each choice in doc.choices
               +choiceRow(choice)
 
       // --- categories ---
-      +panelBlock('categories')(class='panel-warning panel-mini')
+      +panelBlock('categories', 'collapse')(class='panel-warning panel-mini panel-collapse')
           each category in doc.categories
             span.category.alert.alert-info
               | #{category.name_ja} / #{category.name_en}
 
       // --- explanation ---
-      +panelBlock('explanation')(class='panel-mini')
+      +panelBlock('explanation', 'collapse')(class='panel-mini panel-collapse')
         +panelBlock('explanation_ja')(class='panel-info panel-mini')
           | #{doc.explanation_ja}
         +panelBlock('explanation_en')(class='panel-success panel-mini')
