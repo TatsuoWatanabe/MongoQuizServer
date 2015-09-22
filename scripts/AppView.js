@@ -19,8 +19,8 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
             this.mainApiPath = 'http://mongoquizserver.herokuapp.com/api';
             this.apiPaths = (function () {
                 var obj = {};
-                obj['tatsuowatanabe.github.io'] = _this.mainApiPath;
                 obj[location.host] = location.protocol + '//' + location.host + '/api';
+                obj['tatsuowatanabe.github.io'] = _this.mainApiPath;
                 return obj;
             })();
             this.quizzes = [];
@@ -73,7 +73,6 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
         };
         AppView.prototype.startQuiz = function () {
             var _this = this;
-            console.log(this.apiPaths);
             var url = this.apiPaths[location.host] || this.mainApiPath;
             this.$btnStart.hide();
             this.resetResults();
