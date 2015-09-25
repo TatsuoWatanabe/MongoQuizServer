@@ -7,7 +7,7 @@ mixin row(doc)
   if !doc.isNew
     td
       +editButton(doc.editUrl)
-    td
+    td(class=doc.active ? '' : 'text-danger')
       // --- body ---
       +panelBlock('body', 'collapse in')(class='panel-primary panel-mini panel-collapse')
         +panelBlock('body_ja')(class='panel-info panel-mini')
@@ -24,9 +24,9 @@ mixin row(doc)
 
       // --- categories ---
       +panelBlock('categories', 'collapse')(class='panel-warning panel-mini panel-collapse')
-          each category in doc.categories
-            span.category.alert.alert-info
-              | #{category.name_ja} / #{category.name_en}
+        each category in doc.categories
+          span.category.alert.alert-info
+            | #{category.name_ja} / #{category.name_en}
 
       // --- explanation ---
       +panelBlock('explanation', 'collapse')(class='panel-mini panel-collapse')
@@ -35,6 +35,11 @@ mixin row(doc)
         +panelBlock('explanation_en')(class='panel-success panel-mini')
           | #{doc.explanation_en}
       
+      // --- state ---
+      +panelBlock('state', 'collapse' + (doc.active ? '' : ' in'))(class='panel-warning panel-mini panel-collapse')
+        p(style="font-size: 150%")
+          span(class="text-danger glyphicon glyphicon" + (doc.active ? '-heart' : '-remove'))
+          |&nbsp;#{(doc.active ? '' : 'not')} active
   else
     td
       +insertButton(doc.insertUrl)

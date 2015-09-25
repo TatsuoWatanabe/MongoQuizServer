@@ -45,6 +45,7 @@ var MstQuizController = (function () {
         Quiz.model.findById(req.body._id || null).populate('categories').exec().onResolve(function (err, result) {
             var valueObject = req.body;
             delete valueObject._id;
+            valueObject.active = valueObject.active || false;
             var doc = result || Quiz.createDocument();
             doc.set(valueObject);
             doc.save(function (validationErr, savedResult) {

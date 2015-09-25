@@ -1,6 +1,7 @@
 ﻿include ../base/textbox.jade
 include ../base/panelBlock.jade
 include ../base/editButtons.jade
+include ../base/checkbox.jade
 include choiceRowEdit.jade
 include categoriesForm.jade
 
@@ -39,4 +40,8 @@ td
       +textbox('textarea', doc.explanation_ja, errors.explanation_ja)(name="explanation_ja")
     +panelBlock('explanation_en')(class='panel-success panel-mini')
       +textbox('textarea', doc.explanation_en, errors.explanation_en)(name="explanation_en")
-    
+
+  // --- state ---
+  +panelBlock('state', 'collapse in')(class='panel-warning panel-mini panel-collapse')
+    +checkbox()(name="active" value="1" checked=doc.active)
+      | active

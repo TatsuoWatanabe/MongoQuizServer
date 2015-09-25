@@ -1,0 +1,6 @@
+﻿mixin checkbox(divClasses)
+  div.checkbox(class=divClasses)
+    label
+      input(type="checkbox")&attributes(attributes)
+      if block
+        block

@@ -15,6 +15,7 @@ class ApiController {
     var limit = Number(req.query.limit) || 10;
     var query = Quiz.model.find({})
                           .limit(limit)
+                          .where({ active: true})
                           .where({ random: {$near: [Math.random(), Math.random()]} })
                           .populate({ path: 'categories' });
     query.exec((err, results) => {

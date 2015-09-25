@@ -1,8 +1,7 @@
-﻿mixin categoriesForm(categories, checkedIds)
-    each category, index in categories
-      -var isChecked = checkedIds.indexOf(category.id) > -1
+﻿include ../base/checkbox.jade
 
-      div.checkbox.category
-        label
-          input(type="checkbox" name="categories[]" value="#{category._id}" checked=isChecked)
-          | #{category.name_ja} / #{category.name_en}
+mixin categoriesForm(categories, checkedIds)
+  each category, index in categories
+    -var isChecked = checkedIds.indexOf(category.id) > -1
+    +checkbox('category')(name="categories[]" value="#{category._id}" checked=isChecked)
+      | #{category.name_ja} / #{category.name_en}

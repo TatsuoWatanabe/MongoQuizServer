@@ -42,4 +42,4 @@ li.choice:nth-child(even) { background: #f1dbe4; }
 .panel.panel-mini>.panel-body    { padding: 5px; }
 
 /* panel-collapse */
-.panel-collapse>.panel-heading { cursor: pointer}
+.panel-collapse>.panel-heading { cursor: pointer; }

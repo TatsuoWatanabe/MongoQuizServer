@@ -32,6 +32,7 @@ var _def = {
     categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category', index: true }],
     explanation_ja: { type: String, 'default': '' },
     explanation_en: { type: String, 'default': '' },
+    active: { type: Boolean, 'default': true },
     random: { type: [Number], 'default': function () {
         return [Math.random(), Math.random()];
     }, index: '2d' },

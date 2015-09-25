@@ -36,6 +36,7 @@ var _def = {
   categories    : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category', index: true }],
   explanation_ja: { type: String            , 'default': '' },
   explanation_en: { type: String            , 'default': '' },
+  active        : { type: Boolean           , 'default': true },
   random        : { type: [Number]          , 'default': () => { return [Math.random(), Math.random()]}, index: '2d'},
   created       : { type: Date              , 'default': Date.now },
   modified      : { type: Date              , 'default': Date.now }
@@ -66,6 +67,7 @@ class Quiz extends ModelBase {
   public  categories    : typeof _def.categories;
   public  explanation_ja: typeof _def.explanation_ja.type;
   public  explanation_en: typeof _def.explanation_en.type;
+  public  active        : typeof _def.active;
   private created       : typeof _def.created.type.prototype;
   private modified      : typeof _def.modified.type.prototype;
 

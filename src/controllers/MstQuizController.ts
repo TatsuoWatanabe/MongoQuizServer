@@ -56,6 +56,7 @@ class MstQuizController {
     Quiz.model.findById(req.body._id || null).populate('categories').exec().onResolve((err: any, result: typeof Quiz.modelInterface) => {
       var valueObject = req.body;
       delete valueObject._id;
+      valueObject.active = valueObject.active || false;
 
       var doc = result || Quiz.createDocument();
       doc.set(valueObject);
