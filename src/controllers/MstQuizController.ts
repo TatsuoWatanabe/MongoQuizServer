@@ -18,7 +18,7 @@ class MstQuizController {
    * メインページのレンダリング
    */
   public static index(req: express.Request, res: express.Response) {
-    var paginateDefaults = { page: 1, limit: 10 };
+    var paginateDefaults = { page: 1, limit: 5 };
     var paginateOption: mongoose.PaginateOption = {
       page : Number(req.query.page)  || paginateDefaults.page,
       limit: Number(req.query.limit) || paginateDefaults.limit

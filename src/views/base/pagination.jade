@@ -36,9 +36,10 @@ mixin paginationForManyPages(pager)
     li.disabled: span="›"
     li.disabled: span="»"
 
-mixin pagination(pager)
-  div.page-header.no-margin
-    h3.no-margin: small=pager.resultString
+mixin pagination(pager, onlyPages)
+  if !onlyPages
+    div.page-header.no-margin
+      h3.no-margin: small=pager.resultString
   if (pager.itemCount)
     div.text-right
       ul.pagination.top-bottom-margin5(style="font-size: 120%")

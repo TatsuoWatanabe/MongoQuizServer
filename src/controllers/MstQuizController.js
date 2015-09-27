@@ -8,7 +8,7 @@ var MstQuizController = (function () {
      * メインページのレンダリング
      */
     MstQuizController.index = function (req, res) {
-        var paginateDefaults = { page: 1, limit: 10 };
+        var paginateDefaults = { page: 1, limit: 5 };
         var paginateOption = {
             page: Number(req.query.page) || paginateDefaults.page,
             limit: Number(req.query.limit) || paginateDefaults.limit
