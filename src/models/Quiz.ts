@@ -14,8 +14,7 @@ class Choice {
     objectId : mongoose.Schema.Types.ObjectId,
     body_ja  : { type: String, 'default': ''},
     body_en  : { type: String, 'default': ''},
-    point_max: { type: Number, 'default': 0 },
-    point_min: { type: Number, 'default': 0 },
+    point    : { type: Number, 'default': 0 }
   };
   public static schema         = new mongoose.Schema(Choice.def);
   public static model          = mongoose.model<IChoice>('Choice', Choice.schema);
@@ -24,8 +23,7 @@ class Choice {
   public objectId : typeof Choice.def.objectId;
   public body_ja  : typeof Choice.def.body_ja.type.prototype;
   public body_en  : typeof Choice.def.body_en.type.prototype;
-  public point_max: typeof Choice.def.point_max.type.prototype;
-  public point_min: typeof Choice.def.point_min.type.prototype;
+  public point    : typeof Choice.def.point.type.prototype;
 }
 
 var _def = {

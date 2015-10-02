@@ -14,12 +14,9 @@ mixin choiceRowEdit(doc, index, disabled)
         if index !== 0 || disabled
           button.btn.btn-default.btn-compact.btn-danger.pull-right.choice-delete(type="button") Delete
     div.row
-      div.col-md-8
+      div.col-md-10
         +panelBlock('body_en')(class='panel-success panel-mini')
           +textbox('text', doc.body_en, errors.body_en)(name="choices[#{i}][body_en]", disabled=disabled)
       div.col-md-2
-        +panelBlock('point_max')(class='panel-primary panel-mini')
-          +textbox('text', doc.point_max, errors.point_max)(name="choices[#{i}][point_max]", disabled=disabled)
-      div.col-md-2
-        +panelBlock('point_min')(class='panel-danger panel-mini')
-          +textbox('text', doc.point_min, errors.point_min)(name="choices[#{i}][point_min]", disabled=disabled)
+        +panelBlock('point')(class=(doc.point > 0 ? 'panel-primary' : 'panel-danger') + ' panel-mini')
+          +textbox('number', doc.point, errors.point)(name="choices[#{i}][point]", disabled=disabled)

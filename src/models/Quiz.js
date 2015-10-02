@@ -16,8 +16,7 @@ var Choice = (function () {
         objectId: mongoose.Schema.Types.ObjectId,
         body_ja: { type: String, 'default': '' },
         body_en: { type: String, 'default': '' },
-        point_max: { type: Number, 'default': 0 },
-        point_min: { type: Number, 'default': 0 },
+        point: { type: Number, 'default': 0 }
     };
     Choice.schema = new mongoose.Schema(Choice.def);
     Choice.model = mongoose.model('Choice', Choice.schema);

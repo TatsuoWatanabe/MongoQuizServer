@@ -28,5 +28,14 @@
       $body.collapse('toggle');
     }
   });
-  
+
+  /* point input */
+  $(document).on('change keyup', 'input[name$="[point]"]', (e) => {
+    var $textbox = $(e.target);
+    var $panel   = $textbox.closest('.panel');
+    var point    = Number($textbox.val());
+    if (isNaN(point)) { return; }
+    var colorClass = (point > 0 ? 'panel-primary' : 'panel-danger');
+    $panel.removeClass('panel-primary panel-danger').addClass(colorClass);
+  });
 });
