@@ -15,7 +15,7 @@ class AppView extends Backbone.View<Backbone.Model> {
   private mainApiPath   = 'http://mongoquizserver.herokuapp.com/api';
   private apiPaths = (() => {
     var obj = {};
-    obj[location.host] = location.protocol + '//' + location.host + '/api';
+    obj[location.host]              = location.protocol + '//' + location.host + '/api';
     obj['tatsuowatanabe.github.io'] = this.mainApiPath;
     return obj;
   })();
@@ -101,10 +101,9 @@ class AppView extends Backbone.View<Backbone.Model> {
     this.nextQuiz();
   }
 
-  private takePoint(choice: { point_min: number; point_max: number }) {
-    var max = choice.point_max;
-    var min = choice.point_min;
-    return Math.floor(Math.random() * (max - min) + min);
+  private takePoint(choice: { point: number; }) {
+    var p = choice.point;
+    return Math.ceil(p * (1 + Math.random() * 0.5))
   }
 
   private nextQuiz() {

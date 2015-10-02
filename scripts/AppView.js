@@ -106,9 +106,8 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
             this.nextQuiz();
         };
         AppView.prototype.takePoint = function (choice) {
-            var max = choice.point_max;
-            var min = choice.point_min;
-            return Math.floor(Math.random() * (max - min) + min);
+            var p = choice.point;
+            return Math.ceil(p * (1 + Math.random() * 0.5));
         };
         AppView.prototype.nextQuiz = function () {
             this.currentQuiz = this.quizzes.shift();
