@@ -166,7 +166,15 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
             var choicesTemplate = Hogan.compile($('#choices-template').html());
             var choicesHtml = choicesTemplate.render({ 'choices': choices });
             this.$quizDisplay.html(body + '?');
+            // set choices to DOM, and set visible state.
             this.$choicesList.html(choicesHtml).toggle(!!choices.length);
+            // change size of the button text.
+            this.$choicesList.find('li button').each(function (i, elem) {
+                var btnTxt = $(elem).text();
+                if (btnTxt.length > 25) {
+                    $(elem).css('font-size', '80%');
+                }
+            });
         };
         return AppView;
     })(Backbone.View);
