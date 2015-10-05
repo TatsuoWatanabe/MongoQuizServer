@@ -6,13 +6,14 @@ import Router = require('Router');
 declare var Hogan;
 
 class AppView extends Backbone.View<Backbone.Model> {
-  public  $el           = $('#quizapp');
-  private $quizApp      = $('#quizapp');
-  private $quizDisplay  = $('#quiz-display');
-  private $pointDisplay = $('#point-display');
-  private $choicesList  = $('#choices-list');
-  private $btnStart     = $('#btn-start');
-  private mainApiPath   = 'http://mongoquizserver.herokuapp.com/api';
+  public  $el              = $('#quizapp');
+  private $quizApp         = $('#quizapp');
+  private $quizDisplay     = $('#quiz-display');
+  private $pointDisplay    = $('#point-display');
+  private $progressDisplay = $('#progress-display');
+  private $choicesList     = $('#choices-list');
+  private $btnStart        = $('#btn-start');
+  private mainApiPath      = 'http://mongoquizserver.herokuapp.com/api';
   private apiPaths = (() => {
     var obj = {};
     obj[location.host]              = location.protocol + '//' + location.host + '/api';
@@ -20,6 +21,7 @@ class AppView extends Backbone.View<Backbone.Model> {
     return obj;
   })();
   private quizzes       = [];
+  private allQuizzes    = [];
   private currentQuiz: any;
   private results = {
     total      : 0,
@@ -73,7 +75,9 @@ class AppView extends Backbone.View<Backbone.Model> {
     $.ajax(url, {
       data: { limit: 10 }
     }).done((data) => {
-      this.quizzes = data;
+      this.quizzes    = _.clone(data);
+      this.allQuizzes = _.clone(data);
+      this.initProgress(this.quizzes);
       this.nextQuiz();
     }).fail(() => {
       this.$btnStart.show();
@@ -86,19 +90,40 @@ class AppView extends Backbone.View<Backbone.Model> {
   }
 
   private answer(ev:Event) {
-    var index     = $(ev.target).data('index');
-    var choice    = this.currentQuiz.choices[index];
-    var point     = this.takePoint(choice);
-    var isCorrect = (point > 0);
+    var index          = $(ev.target).data('index');
+    var choice         = this.currentQuiz.choices[index];
+    var point          = this.takePoint(choice);
+    var isCorrect      = (point > 0);
+    var quizIndex      = this.allQuizzes.length - this.quizzes.length - 1;
+    var answerClass    = isCorrect ? 'correct' : 'incorrect';
     this.results.total += point;
-    if (isCorrect) {
-      this.$quizApp.tempAddClass('correct', 800);
-    } else {
-      this.$quizApp.tempAddClass('incorrect', 800);
-      this.results.incorrects.push(this.currentQuiz);
-    }
+    this.$quizApp.tempAddClass(answerClass, 800);
+    if (!isCorrect) { this.results.incorrects.push(this.currentQuiz); }
+    this.progress(quizIndex, answerClass);
     this.showPoints();
     this.nextQuiz();
+  }
+
+  private initProgress(quizzes) {
+    var cellsInRow     = 10;
+    var cellsInRestRow = quizzes.length % cellsInRow;
+    var rowCount       = Math.ceil(quizzes.length / cellsInRow);
+    var $tbody         = this.$progressDisplay.find('table tbody');
+    var $trs           = $.arrayInit(rowCount, $('<tr />'));
+    var $trTds         = $trs.map(($elem, index) => {
+      var isRest = (index + 1) === rowCount && cellsInRestRow !== 0;
+      var cells  = isRest ? cellsInRestRow : cellsInRow;
+      var $tr    = $elem.clone();
+      var $tds   = $.arrayInit(cells, $('<td />'));
+      $tds.forEach(($item) => $tr.append($item.clone()));
+      if (isRest) { $tr.append($('<td colspan="' + (cellsInRow - cellsInRestRow) + '" />')); }
+      return $tr;
+    });
+    $tbody.empty().append($trTds);
+  }
+
+  private progress(index: number, answerClass: string) {
+    this.$progressDisplay.find('td').eq(index).addClass(answerClass);
   }
 
   private takePoint(choice: { point: number; }) {

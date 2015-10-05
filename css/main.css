@@ -23,11 +23,11 @@ body {
     transition   : background-color 0.15s linear;
 }
 
-#quizapp.correct {
+.correct {
     background-color: #def0ff !important;
 }
 
-#quizapp.incorrect {
+.incorrect {
     background-color: #f7a091 !important;
 }
 
@@ -158,4 +158,19 @@ body {
 
 .bs-callout-info h4 {
     color: #1b809e;
+}
+
+#progress-display table {
+    width: 100%;
+    max-width: 100%;
+    height: 1.5em;
+    border-collapse:collapse;
+}
+
+#progress-display td {
+    border: 1px solid #ddd;
+}
+
+#progress-display td[colspan] {
+    border: none;
 }

@@ -24,6 +24,7 @@
     <Content Include="scripts\lib\backbone.localStorage.js" />
     <Content Include="scripts\lib\jquery.ajaxLoaderImg.js" />
     <Content Include="scripts\lib\jquery.js" />
+    <Content Include="scripts\lib\jquery.arrayInit.js" />
     <Content Include="scripts\lib\jquery.tempAddClass.js" />
     <Content Include="scripts\lib\underscore.js" />
     <Content Include="scripts\requireJs\r.js" />
@@ -48,6 +49,7 @@
     <TypeScriptCompile Include="scripts\typings\backbone.localStorage.d.ts" />
     <TypeScriptCompile Include="scripts\typings\jquert.ajaxLoaderImg.d.ts" />
     <TypeScriptCompile Include="scripts\typings\jquery.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\jquery.arrayInit.d.ts" />
     <TypeScriptCompile Include="scripts\typings\jquery.tempAddClass.d.ts" />
     <TypeScriptCompile Include="scripts\typings\require.d.ts" />
     <TypeScriptCompile Include="scripts\typings\typings.d.ts" />

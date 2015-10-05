@@ -14,6 +14,7 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
             this.$quizApp = $('#quizapp');
             this.$quizDisplay = $('#quiz-display');
             this.$pointDisplay = $('#point-display');
+            this.$progressDisplay = $('#progress-display');
             this.$choicesList = $('#choices-list');
             this.$btnStart = $('#btn-start');
             this.mainApiPath = 'http://mongoquizserver.herokuapp.com/api';
@@ -24,6 +25,7 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
                 return obj;
             })();
             this.quizzes = [];
+            this.allQuizzes = [];
             this.results = {
                 total: 0,
                 incorrects: [],
@@ -79,7 +81,9 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
             $.ajax(url, {
                 data: { limit: 10 }
             }).done(function (data) {
-                _this.quizzes = data;
+                _this.quizzes = _.clone(data);
+                _this.allQuizzes = _.clone(data);
+                _this.initProgress(_this.quizzes);
                 _this.nextQuiz();
             }).fail(function () {
                 _this.$btnStart.show();
@@ -94,16 +98,38 @@ define(["require", "exports", 'Router'], function (require, exports, Router) {
             var choice = this.currentQuiz.choices[index];
             var point = this.takePoint(choice);
             var isCorrect = (point > 0);
+            var quizIndex = this.allQuizzes.length - this.quizzes.length - 1;
+            var answerClass = isCorrect ? 'correct' : 'incorrect';
             this.results.total += point;
-            if (isCorrect) {
-                this.$quizApp.tempAddClass('correct', 800);
-            }
-            else {
-                this.$quizApp.tempAddClass('incorrect', 800);
+            this.$quizApp.tempAddClass(answerClass, 800);
+            if (!isCorrect) {
                 this.results.incorrects.push(this.currentQuiz);
             }
+            this.progress(quizIndex, answerClass);
             this.showPoints();
             this.nextQuiz();
+        };
+        AppView.prototype.initProgress = function (quizzes) {
+            var cellsInRow = 10;
+            var cellsInRestRow = quizzes.length % cellsInRow;
+            var rowCount = Math.ceil(quizzes.length / cellsInRow);
+            var $tbody = this.$progressDisplay.find('table tbody');
+            var $trs = $.arrayInit(rowCount, $('<tr />'));
+            var $trTds = $trs.map(function ($elem, index) {
+                var isRest = (index + 1) === rowCount && cellsInRestRow !== 0;
+                var cells = isRest ? cellsInRestRow : cellsInRow;
+                var $tr = $elem.clone();
+                var $tds = $.arrayInit(cells, $('<td />'));
+                $tds.forEach(function ($item) { return $tr.append($item.clone()); });
+                if (isRest) {
+                    $tr.append($('<td colspan="' + (cellsInRow - cellsInRestRow) + '" />'));
+                }
+                return $tr;
+            });
+            $tbody.empty().append($trTds);
+        };
+        AppView.prototype.progress = function (index, answerClass) {
+            this.$progressDisplay.find('td').eq(index).addClass(answerClass);
         };
         AppView.prototype.takePoint = function (choice) {
             var p = choice.point;
