@@ -196,9 +196,13 @@ class AppView extends Backbone.View<Backbone.Model> {
     // change size of the button text.
     this.$choicesList.find('li button').each((i, elem) => {
       var btnTxt = $(elem).text();
-      if (btnTxt.length > 25) {
-        $(elem).css('font-size', '80%');
-      }
+      var btl    = btnTxt.length;
+      $(elem).css('font-size', (
+        btl > 40 ?  '80%' :
+        btl > 25 ?  '90%' :
+        btl > 10 ?  '95%' :
+                   '100%'
+      ));
     });
   }
 
