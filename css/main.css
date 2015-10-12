@@ -9,18 +9,24 @@ body {
     line-height: 1.4em;
     background : #eeeeee;
     color      : #333333;
-    width      : 70%;
+    width      : 100%;
     min-width  : 520px;
-    margin     : 0 auto;
 }
 
 #quizapp {
+    width        : 70%;
+    margin       : 0 auto;
     background   : #fff;
     padding      : 20px;
-    margin-bottom: 40px;
     box-shadow   : rgba(0, 0, 0, 0.2) 0 2px 6px 0;
     border-radius: 0 0 5px 5px;
     transition   : background-color 0.15s linear;
+}
+
+@media (max-width:991px) {
+    #quizapp {
+        width: 90%;
+    }
 }
 
 .correct {
@@ -49,6 +55,12 @@ body {
     margin       : 20px 0px;
     box-shadow   : rgba(0, 0, 0, 0.2) 0 2px 6px 0;
     border-radius: 0 0 5px 5px;
+}
+
+#btn-start {
+    font-size: 160%;
+    width    : 15rem;
+    height   : 2rem;
 }
 
 #choices-list {
@@ -82,7 +94,7 @@ body {
 }
 
 #langage-selector .lang, #point-display {
-    font-size      : 0.9rem;
+    font-size      : 1.3rem;
     line-height    : 20px;
     text-decoration: none;
     background     : rgba(0, 0, 0, 0.1);
@@ -113,13 +125,16 @@ body {
     cursor     : default;
 }
 
+#langage-selector {
+    padding-top: 4px;
+}
+
 #point-display {
-    font-size:1.3rem;
     float    : right;
 }
 
 #instructions {
-    margin     : 10px auto;
+    margin     : 50px auto 0 auto;
     color      : #777777;
     text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
     text-align : center;
