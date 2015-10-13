@@ -52,9 +52,7 @@ var Routes = (function () {
         app.post(Routes.paths.mstCategory.execRow, needLogin, MstCategoryController.execRow);
         // ----------------------------------------
         // --- main -------------------------------
-        app.get('/', function (req, res) {
-            res.send('It works.');
-        });
+        app.get('/', LoginController.index);
         // ----------------------------------------
     };
     return Routes;
