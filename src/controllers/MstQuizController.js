@@ -12,7 +12,8 @@ var MstQuizController = (function () {
         var paginateOption = {
             page: Number(req.query.page) || paginateDefaults.page,
             limit: Number(req.query.limit) || paginateDefaults.limit,
-            searchWords: req.query.search_words || ''
+            searchWords: req.query.search_words || '',
+            sortBy: { active: 1 }
         };
         var query = Quiz.createSearchQuery(paginateOption.searchWords);
         Quiz.model.paginate(query, paginateOption, function (err, results, pageCount, itemCount) {

@@ -22,7 +22,8 @@ class MstQuizController {
     var paginateOption: mongoose.PaginateOption = {
       page       : Number(req.query.page)  || paginateDefaults.page,
       limit      : Number(req.query.limit) || paginateDefaults.limit,
-      searchWords: req.query.search_words  || ''
+      searchWords: req.query.search_words  || '',
+      sortBy     : { active: 1 }
     };
     var query = Quiz.createSearchQuery(paginateOption.searchWords);
     
