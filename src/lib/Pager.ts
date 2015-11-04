@@ -7,8 +7,8 @@ class Pager {
     public pageCount       : number                 ,
     public itemCount       : number                 ,
     public paginateOption  : mongoose.PaginateOption,
-    public paginateDefaults: { page: number; limit: number; }) {
-  }
+    public paginateDefaults: { page: number; limit: number; }
+  ) {}
 
   public items       : Object[] = this.results || [];
   public currentPage : number   = this.paginateOption.page;
@@ -27,7 +27,7 @@ class Pager {
     var buf = [];
     if (!this.isDefaultPage(page))               { buf.push('page=' + page); }
     if (!this.isDefaultLimit(this.currentLimit)) { buf.push('limit=' + this.currentLimit); }
-
+    if (this.paginateOption.searchWords)         { buf.push('search_words=' + encodeURIComponent(this.paginateOption.searchWords)); }
     return '?' + buf.join('&');
   }
   

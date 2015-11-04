@@ -15,16 +15,18 @@ class MstQuizController {
   }
 
   /**
-   * メインページのレンダリング
+   * render the page.
    */
   public static index(req: express.Request, res: express.Response) {
     var paginateDefaults = { page: 1, limit: 5 };
     var paginateOption: mongoose.PaginateOption = {
-      page : Number(req.query.page)  || paginateDefaults.page,
-      limit: Number(req.query.limit) || paginateDefaults.limit
+      page       : Number(req.query.page)  || paginateDefaults.page,
+      limit      : Number(req.query.limit) || paginateDefaults.limit,
+      searchWords: req.query.search_words  || ''
     };
+    var query = Quiz.createSearchQuery(paginateOption.searchWords);
     
-    Quiz.model.paginate({}, paginateOption, (err, results, pageCount, itemCount) => {
+    Quiz.model.paginate(query, paginateOption, (err, results, pageCount, itemCount) => {
       Quiz.model.populate(results, { path: 'categories' }, (err, popDocs) => {
         var pager = new Pager(popDocs, pageCount, itemCount, paginateOption, paginateDefaults);
         res.render('mstQuiz/index', {
@@ -32,6 +34,7 @@ class MstQuizController {
             title      : 'Quiz Master',
             name       : 'quiz',
             pager      : pager,
+            searchWords: paginateOption.searchWords,
             newDocument: Quiz.createDocument()
           }
         });

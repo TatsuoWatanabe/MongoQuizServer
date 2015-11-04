@@ -5,15 +5,17 @@ var MstQuizController = (function () {
     function MstQuizController() {
     }
     /**
-     * メインページのレンダリング
+     * render the page.
      */
     MstQuizController.index = function (req, res) {
         var paginateDefaults = { page: 1, limit: 5 };
         var paginateOption = {
             page: Number(req.query.page) || paginateDefaults.page,
-            limit: Number(req.query.limit) || paginateDefaults.limit
+            limit: Number(req.query.limit) || paginateDefaults.limit,
+            searchWords: req.query.search_words || ''
         };
-        Quiz.model.paginate({}, paginateOption, function (err, results, pageCount, itemCount) {
+        var query = Quiz.createSearchQuery(paginateOption.searchWords);
+        Quiz.model.paginate(query, paginateOption, function (err, results, pageCount, itemCount) {
             Quiz.model.populate(results, { path: 'categories' }, function (err, popDocs) {
                 var pager = new Pager(popDocs, pageCount, itemCount, paginateOption, paginateDefaults);
                 res.render('mstQuiz/index', {
@@ -21,6 +23,7 @@ var MstQuizController = (function () {
                         title: 'Quiz Master',
                         name: 'quiz',
                         pager: pager,
+                        searchWords: paginateOption.searchWords,
                         newDocument: Quiz.createDocument()
                     }
                 });

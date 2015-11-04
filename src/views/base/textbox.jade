@@ -4,9 +4,9 @@
 
   div(class="#{errMsg ? 'has-error' : ''}")
     if inputType !== 'textarea'
-      input(type="#{inputType}" class="#{classes}" value="#{val}")&attributes(attributes)=name
+      input(type="#{inputType}" class="#{classes}" value="#{val}")&attributes(attributes)
     else
-      textarea(class="#{classes}" name="#{name}")&attributes(attributes)=name
+      textarea(class="#{classes}" name="#{name}")&attributes(attributes)
         | #{val}
     // error message
     if errMsg

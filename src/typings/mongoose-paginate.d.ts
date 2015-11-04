@@ -20,11 +20,12 @@
   }
 
   export interface PaginateOption {
-    page?    : number;
-    limit?   : number;
-    columns? : Object;
-    sortBy?  : Object;
-    populate?: Object;
+    page?        : number;
+    limit?       : number;
+    searchWords? : string;
+    columns?     : Object;
+    sortBy?      : Object;
+    populate?    : Object;
   }
 
 }

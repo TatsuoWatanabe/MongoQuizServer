@@ -65,6 +65,23 @@ var Quiz = (function (_super) {
         if (doc === void 0) { doc = {}; }
         return new Choice.model(doc);
     };
+    /**
+     * create search query from search words.
+     */
+    Quiz.createSearchQuery = function (searchWords) {
+        if (searchWords === void 0) { searchWords = ''; }
+        if (!searchWords) {
+            return {};
+        }
+        var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // and search pattern
+        var regExp = RegExp(pattern, 'i');
+        return {
+            '$or': [
+                { body_ja: regExp },
+                { body_en: regExp }
+            ]
+        };
+    };
     Quiz.modelInterface = {};
     Quiz.model = _model;
     Quiz.schema = _schema;

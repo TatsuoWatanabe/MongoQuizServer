@@ -27,6 +27,9 @@ var Pager = (function () {
         if (!this.isDefaultLimit(this.currentLimit)) {
             buf.push('limit=' + this.currentLimit);
         }
+        if (this.paginateOption.searchWords) {
+            buf.push('search_words=' + encodeURIComponent(this.paginateOption.searchWords));
+        }
         return '?' + buf.join('&');
     };
     return Pager;

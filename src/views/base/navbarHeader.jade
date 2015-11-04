@@ -1,4 +1,6 @@
-﻿mixin navbarHeader(name)
+﻿include ../base/textbox.jade
+
+mixin navbarHeader(params)
   // ----------------------
   mixin listItem(itemName, pageName)
     - var className = (itemName == pageName ? 'active' : '')
@@ -18,8 +20,14 @@
         // Collect the nav links, forms, and other content for toggling
         div.collapse.navbar-collapse.navbar-ex1-collapse
           ul.nav.navbar-nav
-            +listItem('quiz'    , name) Quiz Master
-            +listItem('category', name) Category Master
+            +listItem('quiz'    , params.name) Quiz Master
+            +listItem('category', params.name) Category Master
+            li   
+              form.input-group.navbar-form.navbar-left(role="search" action="" method="get" style="width:350px")
+                div.form-group
+                  input.form-control(type="text" name="search_words" value=params.searchWords)
+                  span.input-group-btn
+                    button.btn.btn-default(role="button" type="submit") Search
           div.navbar-form.navbar-right
             a(href="/logout")
               button.btn.btn-danger

@@ -84,6 +84,21 @@ class Quiz extends ModelBase {
     return new Choice.model(doc);
   }
 
+  /**
+   * create search query from search words.
+   */
+  public static createSearchQuery(searchWords: string = '') {
+    if (!searchWords) { return {}; }
+    var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // and search pattern
+    var regExp  = RegExp(pattern, 'i');
+    return {
+      '$or': [
+        { body_ja: regExp },
+        { body_en: regExp }
+      ]
+    };
+  }
+
 }
 
 export = Quiz;

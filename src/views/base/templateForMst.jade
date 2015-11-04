@@ -7,7 +7,7 @@ block script
 block title
   title #{params.title}
 block body
-  +navbarHeader(params.name)
+  +navbarHeader(params)
 
   div(style="padding: 0px 20px")
     +pagination(params.pager)
