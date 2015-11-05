@@ -55,7 +55,7 @@ var Quiz = (function (_super) {
         _super.apply(this, arguments);
     }
     /**
-     * ファクトリメソッド
+     * factory method
      */
     Quiz.createDocument = function (doc) {
         if (doc === void 0) { doc = {}; }
@@ -73,7 +73,7 @@ var Quiz = (function (_super) {
         if (!searchWords) {
             return {};
         }
-        var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // and search pattern
+        var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // And search pattern
         var regExp = RegExp(pattern, 'i');
         return {
             '$or': [

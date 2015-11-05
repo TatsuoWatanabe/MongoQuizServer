@@ -37,11 +37,28 @@ var Category = (function (_super) {
         _super.apply(this, arguments);
     }
     /**
-     * ファクトリメソッド
+     * factory method
      */
     Category.createDocument = function (doc) {
         if (doc === void 0) { doc = {}; }
         return new Category.model(doc);
+    };
+    /**
+     * create search query from search words.
+     */
+    Category.createSearchQuery = function (searchWords) {
+        if (searchWords === void 0) { searchWords = ''; }
+        if (!searchWords) {
+            return {};
+        }
+        var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // And search pattern
+        var regExp = RegExp(pattern, 'i');
+        return {
+            '$or': [
+                { name_ja: regExp },
+                { name_en: regExp }
+            ]
+        };
     };
     Category.modelInterface = {};
     Category.model = _model;

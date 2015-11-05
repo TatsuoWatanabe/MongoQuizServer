@@ -74,7 +74,7 @@ class Quiz extends ModelBase {
   public static schema         = _schema;
 
   /**
-   * ファクトリメソッド
+   * factory method
    */
   public static createDocument(doc: Object = {}) {
     return new Quiz.model(doc);
@@ -89,7 +89,7 @@ class Quiz extends ModelBase {
    */
   public static createSearchQuery(searchWords: string = '') {
     if (!searchWords) { return {}; }
-    var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // and search pattern
+    var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // And search pattern
     var regExp  = RegExp(pattern, 'i');
     return {
       '$or': [

@@ -4,21 +4,24 @@ var MstCategoryController = (function () {
     function MstCategoryController() {
     }
     /**
-     * メインページのレンダリング
+     * render the page.
      */
     MstCategoryController.index = function (req, res) {
         var paginateDefaults = { page: 1, limit: 10 };
         var paginateOption = {
             page: Number(req.query.page) || paginateDefaults.page,
-            limit: Number(req.query.limit) || paginateDefaults.limit
+            limit: Number(req.query.limit) || paginateDefaults.limit,
+            searchWords: req.query.search_words || '',
         };
-        Category.model.paginate({}, paginateOption, function (err, results, pageCount, itemCount) {
+        var query = Category.createSearchQuery(paginateOption.searchWords);
+        Category.model.paginate(query, paginateOption, function (err, results, pageCount, itemCount) {
             var pager = new Pager(results, pageCount, itemCount, paginateOption, paginateDefaults);
             res.render('mstCategory/index', {
                 params: {
                     title: 'Category Master',
                     name: 'category',
                     pager: pager,
+                    searchWords: paginateOption.searchWords,
                     newDocument: Category.createDocument()
                 }
             });
