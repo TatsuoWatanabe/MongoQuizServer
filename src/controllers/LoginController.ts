@@ -20,6 +20,7 @@ class LoginController {
     res.render('login/index', {
       params: {
         title     : 'Login',
+        name      : 'login',
         isLoggedin: LoginController.isLoggedin(req)
       }
     });
