@@ -33,7 +33,7 @@ class LoginController {
       var afterLoginPath = LoginController.loadAfterLoginPath(req) || LoginController.paths.index;
 
       Admin.model.find(cond).exec().onResolve((err, result) => {
-        var loggedin = !!result;
+        var loggedin = result.length === 1;
 
         if (loggedin) {
           LoginController.saveAdminEmail(req, email);

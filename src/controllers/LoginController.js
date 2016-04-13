@@ -26,7 +26,7 @@ var LoginController = (function () {
         var cond = { "email": email, "password": password };
         var afterLoginPath = LoginController.loadAfterLoginPath(req) || LoginController.paths.index;
         Admin.model.find(cond).exec().onResolve(function (err, result) {
-            var loggedin = !!result;
+            var loggedin = result.length === 1;
             if (loggedin) {
                 LoginController.saveAdminEmail(req, email);
                 res.redirect(afterLoginPath);
