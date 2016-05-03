@@ -13,8 +13,8 @@ app.use(bodyParser.json());                         // parse application/json
 
 // --- connect to Database ------------------------
 (() => {
-  var connectString: string = process.env.MONGOLAB_URI
-                           || process.env.MONGO_LOCAL_VMHOST_URI;
+  var connectString: string  = process.env.MONGOLAB_URI
+                            || process.env.MONGO_LOCAL_URI;
   mongoose.connect(connectString, (err) => {
     if (err) { console.log(err); }
     else     { console.log('connected to database ' + connectString + '.'); }

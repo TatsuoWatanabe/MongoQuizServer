@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 app.use(bodyParser.json()); // parse application/json
 // --- connect to Database ------------------------
 (function () {
-    var connectString = process.env.MONGOLAB_URI || process.env.MONGO_LOCAL_VMHOST_URI;
+    var connectString = process.env.MONGOLAB_URI || process.env.MONGO_LOCAL_URI;
     mongoose.connect(connectString, function (err) {
         if (err) {
             console.log(err);

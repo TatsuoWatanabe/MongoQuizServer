@@ -187,3 +187,9 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+# add
+.ntvs_analysis.dat
+memo
+MongoQuizServer.njsproj
+MongoQuizServer.sln
