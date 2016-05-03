@@ -41,9 +41,9 @@ app.use(bodyParser.json());                         // parse application/json
 (() => {
   Routes.init(app);
   app.use(express.static('public'));
-  app.set('port', (process.env.PORT || 5000));
+  app.set('port'       , (process.env.PORT || 5000));
   app.set('view engine', 'jade');
-  app.set('views', __dirname + '/src/views');
+  app.set('views'      , __dirname + '/src/views');
   app.listen(app.get('port'), () => {
     console.log("Node app is running at localhost:" + app.get('port'));
   });
