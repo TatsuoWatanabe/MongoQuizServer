@@ -1,3 +1,4 @@
+"use strict";
 var ModelBase = (function () {
     function ModelBase() {
     }
@@ -12,12 +13,16 @@ var ModelBase = (function () {
         };
         Object.keys(names).forEach(function (key) {
             schema.virtual(key).get(function () {
-                var url = (key === names.editUrl) ? paths().editRow(this._id) : (key === names.cancelUrl) ? paths().cancelRow(this._id) : (key === names.deleteUrl) ? paths().deleteRow(this._id) : (key === names.execUrl) ? paths().execRow : (key === names.insertUrl) ? paths().insertRow : '';
+                var url = (key === names.editUrl) ? paths().editRow(this._id) :
+                    (key === names.cancelUrl) ? paths().cancelRow(this._id) :
+                        (key === names.deleteUrl) ? paths().deleteRow(this._id) :
+                            (key === names.execUrl) ? paths().execRow :
+                                (key === names.insertUrl) ? paths().insertRow : '';
                 return url;
             });
         });
     };
     return ModelBase;
-})();
+}());
 module.exports = ModelBase;
 //# sourceMappingURL=ModelBase.js.map

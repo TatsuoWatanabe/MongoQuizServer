@@ -4,7 +4,8 @@ $(function () {
         var $invisibleRow = $btn.closest('.panel').find('li.list-group-item.hide');
         var $newChoiceRow = $invisibleRow.clone().removeClass('hide');
         var $choicesList = $btn.closest('.panel').find('ul.list-group');
-        $choicesList.append($newChoiceRow).append($invisibleRow);
+        $choicesList.append($newChoiceRow)
+            .append($invisibleRow);
         $newChoiceRow.find('input').each(function (index, elem) {
             var $el = $(elem);
             var newIndex = $choicesList.find('li:visible').length - 1;

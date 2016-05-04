@@ -1,8 +1,8 @@
-var __extends = this.__extends || function (d, b) {
+"use strict";
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var mongoose = require('mongoose');
 var ModelBase = require('./ModelBase');
@@ -37,6 +37,6 @@ var Admin = (function (_super) {
     Admin.model = _model;
     Admin.schema = _schema;
     return Admin;
-})(ModelBase);
+}(ModelBase));
 module.exports = Admin;
 //# sourceMappingURL=Admin.js.map

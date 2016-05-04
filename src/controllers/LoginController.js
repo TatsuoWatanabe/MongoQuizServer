@@ -1,3 +1,4 @@
+"use strict";
 var Admin = require('../models/Admin');
 var LoginController = (function () {
     function LoginController() {
@@ -34,24 +35,16 @@ var LoginController = (function () {
             else {
                 LoginController.index(req, res);
             }
-        }).onReject(function (err) {
-            res.send('rejected.');
-        });
+        }).onReject(function (err) { res.send('rejected.'); });
     };
     LoginController.logout = function (req, res) {
         req.session.destroy(function (err) { return console.log(err); });
         console.log('deleted sesstion');
         res.redirect(LoginController.paths.index);
     };
-    LoginController.saveAdminEmail = function (req, email) {
-        req.session[LoginController.sessionKeys.adminEmail] = email;
-    };
-    LoginController.saveAfterLoginPath = function (req) {
-        req.session[LoginController.sessionKeys.afterLoginPath] = req.route.path;
-    };
-    LoginController.loadAfterLoginPath = function (req) {
-        return req.session[LoginController.sessionKeys.afterLoginPath] || '';
-    };
+    LoginController.saveAdminEmail = function (req, email) { req.session[LoginController.sessionKeys.adminEmail] = email; };
+    LoginController.saveAfterLoginPath = function (req) { req.session[LoginController.sessionKeys.afterLoginPath] = req.route.path; };
+    LoginController.loadAfterLoginPath = function (req) { return req.session[LoginController.sessionKeys.afterLoginPath] || ''; };
     LoginController.paths = {
         index: '/login',
         logout: '/logout'
@@ -62,6 +55,6 @@ var LoginController = (function () {
     };
     LoginController.isLoggedin = function (req) { return !!req.session[LoginController.sessionKeys.adminEmail]; };
     return LoginController;
-})();
+}());
 module.exports = LoginController;
 //# sourceMappingURL=LoginController.js.map

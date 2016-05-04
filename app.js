@@ -1,3 +1,5 @@
+"use strict";
+/// <reference path="src/typings/tsd.d.ts" />
 var express = require('express');
 var session = require('express-session');
 var mongoose = require('mongoose');
@@ -10,7 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 app.use(bodyParser.json()); // parse application/json
 // --- connect to Database ------------------------
 (function () {
-    var connectString = process.env.MONGOLAB_URI || process.env.MONGO_LOCAL_URI;
+    var connectString = process.env.MONGOLAB_URI
+        || process.env.MONGO_LOCAL_URI;
     mongoose.connect(connectString, function (err) {
         if (err) {
             console.log(err);
@@ -24,7 +27,7 @@ app.use(bodyParser.json()); // parse application/json
 // --- express session ----------------------------
 (function () {
     app.use(session({
-        secret: "hegehoge",
+        secret: 'aaaa',
         saveUninitialized: true,
         resave: true,
         store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -35,7 +38,7 @@ app.use(bodyParser.json()); // parse application/json
     }));
 })();
 // ------------------------------------------------
-//--- start server --------------------------------
+// --- start server --------------------------------
 (function () {
     Routes.init(app);
     app.use(express.static('public'));
@@ -43,8 +46,8 @@ app.use(bodyParser.json()); // parse application/json
     app.set('view engine', 'jade');
     app.set('views', __dirname + '/src/views');
     app.listen(app.get('port'), function () {
-        console.log("Node app is running at localhost:" + app.get('port'));
+        console.log('Node app is running at localhost:' + app.get('port'));
     });
 })();
-//--------------------------------------------------
+// --------------------------------------------------
 //# sourceMappingURL=app.js.map

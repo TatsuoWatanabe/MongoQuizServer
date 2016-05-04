@@ -17,7 +17,7 @@ class Routes {
   }
 
   public static init(app: express.Express) {
-    var needLogin = LoginController.needLogin;
+    const needLogin = LoginController.needLogin;
 
     // --- api --------------------------------
     app.get(Routes.paths.api.index, ApiController.index);
@@ -32,7 +32,7 @@ class Routes {
     app.post(Routes.paths.login.index , LoginController.login);
     app.get (Routes.paths.login.logout, LoginController.logout);
     // ----------------------------------------
-    
+
     // --- mst quiz -----------------------
     app.get(Routes.paths.mstQuiz.index            , needLogin, MstQuizController.index);
     app.get(Routes.paths.mstQuiz.editRow(':_id')  , needLogin, MstQuizController.formRow);
@@ -52,11 +52,11 @@ class Routes {
     app.get(Routes.paths.mstCategory.deleteRow(':_id'), needLogin, MstCategoryController.deleteRow);
     app.post(Routes.paths.mstCategory.execRow         , needLogin, MstCategoryController.execRow);
     // ----------------------------------------
-    
+
     // --- main -------------------------------
     app.get('/', LoginController.index);
     // ----------------------------------------
-    
+
   }
 }
 

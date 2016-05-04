@@ -5,16 +5,16 @@ import mongoose   = require('mongoose');
 import moment     = require('moment');
 import Routes     = require('./src/Routes');
 import bodyParser = require('body-parser');
-var MongoStore    = require('connect-mongo')(session);
-var app           = express();
+const MongoStore  = require('connect-mongo')(session);
+const app         = express();
 
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());                         // parse application/json
 
 // --- connect to Database ------------------------
 (() => {
-  var connectString: string  = process.env.MONGOLAB_URI
-                            || process.env.MONGO_LOCAL_URI;
+  const connectString: string =  process.env.MONGOLAB_URI
+                              || process.env.MONGO_LOCAL_URI;
   mongoose.connect(connectString, (err) => {
     if (err) { console.log(err); }
     else     { console.log('connected to database ' + connectString + '.'); }
@@ -25,7 +25,7 @@ app.use(bodyParser.json());                         // parse application/json
 // --- express session ----------------------------
 (() => {
   app.use(session({
-    secret           : process.env.SESSION_SECRET,
+    secret           : 'aaaa',
     saveUninitialized: true,
     resave           : true,
     store            : new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -37,7 +37,7 @@ app.use(bodyParser.json());                         // parse application/json
 })();
 // ------------------------------------------------
 
-//--- start server --------------------------------
+// --- start server --------------------------------
 (() => {
   Routes.init(app);
   app.use(express.static('public'));
@@ -45,8 +45,8 @@ app.use(bodyParser.json());                         // parse application/json
   app.set('view engine', 'jade');
   app.set('views'      , __dirname + '/src/views');
   app.listen(app.get('port'), () => {
-    console.log("Node app is running at localhost:" + app.get('port'));
+    console.log('Node app is running at localhost:' + app.get('port'));
   });
 })();
-//--------------------------------------------------
+// --------------------------------------------------
 

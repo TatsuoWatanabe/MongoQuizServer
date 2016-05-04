@@ -1,3 +1,4 @@
+"use strict";
 var ApiController = require('./controllers/ApiController');
 var MstQuizController = require('./controllers/MstQuizController');
 var MstCategoryController = require('./controllers/MstCategoryController');
@@ -24,9 +25,7 @@ var Routes = (function () {
         app.get(Routes.paths.api.index, ApiController.index);
         // ----------------------------------------
         // --- wake -------------------------------
-        app.get(Routes.paths.wake, function (req, res) {
-            res.send("All right, I'm okay.");
-        });
+        app.get(Routes.paths.wake, function (req, res) { res.send("All right, I'm okay."); });
         // ----------------------------------------
         // --- login ------------------------------
         app.get(Routes.paths.login.index, LoginController.index);
@@ -56,6 +55,6 @@ var Routes = (function () {
         // ----------------------------------------
     };
     return Routes;
-})();
+}());
 module.exports = Routes;
 //# sourceMappingURL=Routes.js.map

@@ -1,8 +1,8 @@
-var __extends = this.__extends || function (d, b) {
+"use strict";
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var mongoose = require('mongoose');
 var ModelBase = require('./ModelBase');
@@ -22,7 +22,7 @@ var Choice = (function () {
     Choice.model = mongoose.model('Choice', Choice.schema);
     Choice.modelInterface = {};
     return Choice;
-})();
+}());
 var _def = {
     objectId: mongoose.Schema.Types.ObjectId,
     body_ja: { type: String, required: '{PATH} is required!' },
@@ -32,9 +32,7 @@ var _def = {
     explanation_ja: { type: String, 'default': '' },
     explanation_en: { type: String, 'default': '' },
     active: { type: Boolean, 'default': false },
-    random: { type: [Number], 'default': function () {
-        return [Math.random(), Math.random()];
-    }, index: '2d' },
+    random: { type: [Number], 'default': function () { return [Math.random(), Math.random()]; }, index: '2d' },
     created: { type: Date, 'default': Date.now },
     modified: { type: Date, 'default': Date.now }
 };
@@ -75,17 +73,18 @@ var Quiz = (function (_super) {
         }
         var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // And search pattern
         var regExp = RegExp(pattern, 'i');
-        return {
+        var query = {
             '$or': [
                 { body_ja: regExp },
                 { body_en: regExp }
             ]
         };
+        return query;
     };
     Quiz.modelInterface = {};
     Quiz.model = _model;
     Quiz.schema = _schema;
     return Quiz;
-})(ModelBase);
+}(ModelBase));
 module.exports = Quiz;
 //# sourceMappingURL=Quiz.js.map

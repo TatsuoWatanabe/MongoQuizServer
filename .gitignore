@@ -190,6 +190,7 @@ ModelManifest.xml
 
 # add
 .ntvs_analysis.dat
+.DS_Store
 memo
 MongoQuizServer.njsproj
 MongoQuizServer.sln

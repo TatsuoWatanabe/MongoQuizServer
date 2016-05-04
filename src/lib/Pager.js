@@ -1,3 +1,4 @@
+"use strict";
 var Pager = (function () {
     function Pager(results, pageCount, itemCount, paginateOption, paginateDefaults) {
         var _this = this;
@@ -33,6 +34,6 @@ var Pager = (function () {
         return '?' + buf.join('&');
     };
     return Pager;
-})();
+}());
 module.exports = Pager;
 //# sourceMappingURL=Pager.js.map

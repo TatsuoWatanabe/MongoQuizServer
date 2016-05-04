@@ -9,12 +9,8 @@
 // -------------------------
 $(function () {
     $.ajaxSetup({
-        beforeSend: function () {
-            $.ajaxLoaderImg.fadeIn();
-        },
-        complete: function () {
-            $.ajaxLoaderImg.fadeOut();
-        }
+        beforeSend: function () { $.ajaxLoaderImg.fadeIn(); },
+        complete: function () { $.ajaxLoaderImg.fadeOut(); }
     });
     var btnsDisabledStateChange = (function () {
         var func = function (flg) { return $('table.mst').find('.insert-btn, .edit-btn, .child-btn').toggleDisabled(flg); };
@@ -24,9 +20,7 @@ $(function () {
     var ajaxFailedAlert = function () {
         alert("読み込みに失敗しました");
     };
-    var scrollToBottom = function () {
-        $('html, body').animate({ scrollTop: $('body').height() });
-    };
+    var scrollToBottom = function () { $('html, body').animate({ scrollTop: $('body').height() }); };
     // edit row.
     $('table.mst').on('click', '.insert-btn, .edit-btn, .cancel-btn', function (evt) {
         evt.preventDefault();

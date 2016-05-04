@@ -1,8 +1,8 @@
-var __extends = this.__extends || function (d, b) {
+"use strict";
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var mongoose = require('mongoose');
 var ModelBase = require('./ModelBase');
@@ -53,17 +53,18 @@ var Category = (function (_super) {
         }
         var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // And search pattern
         var regExp = RegExp(pattern, 'i');
-        return {
+        var query = {
             '$or': [
-                { name_ja: regExp },
-                { name_en: regExp }
+                { body_ja: regExp },
+                { body_en: regExp }
             ]
         };
+        return query;
     };
     Category.modelInterface = {};
     Category.model = _model;
     Category.schema = _schema;
     return Category;
-})(ModelBase);
+}(ModelBase));
 module.exports = Category;
 //# sourceMappingURL=Category.js.map

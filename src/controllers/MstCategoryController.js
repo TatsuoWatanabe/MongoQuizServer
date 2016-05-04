@@ -1,3 +1,4 @@
+"use strict";
 var Category = require('../models/Category');
 var Pager = require('../lib/Pager');
 var MstCategoryController = (function () {
@@ -28,18 +29,16 @@ var MstCategoryController = (function () {
         });
     };
     /**
-     * 編集用フォームのレンダリング
+     * �ҏW�p�t�H�[���̃����_�����O
      */
     MstCategoryController.formRow = function (req, res) {
         Category.model.findById(req.params._id || null).exec().onResolve(function (err, result) {
             var doc = result || Category.createDocument();
             MstCategoryController.renderFormRow(doc, res);
-        }).onReject(function (err) {
-            res.send('rejected.');
-        });
+        }).onReject(function (err) { res.send('rejected.'); });
     };
     /**
-     * 確定ボタン押下時処理
+     * �m���{�^������������
      */
     MstCategoryController.execRow = function (req, res) {
         Category.model.findById(req.body._id || null).exec().onResolve(function (err, result) {
@@ -55,12 +54,10 @@ var MstCategoryController = (function () {
                     MstCategoryController.renderRow(savedResult._id, res);
                 }
             });
-        }).onReject(function (err) {
-            res.send('rejected.');
-        });
+        }).onReject(function (err) { res.send('rejected.'); });
     };
     /**
-     * 削除ボタン押下時処理
+     * �폜�{�^������������
      */
     MstCategoryController.deleteRow = function (req, res) {
         Category.model.findById(req.params._id).exec().onResolve(function (err, result) {
@@ -72,13 +69,13 @@ var MstCategoryController = (function () {
         });
     };
     /**
-     * 取消ボタン押下時処理
+     * �����{�^������������
      */
     MstCategoryController.cancelRow = function (req, res) {
         MstCategoryController.renderRow(req.params._id, res);
     };
     /**
-     * １行のレンダリング
+     * �P�s�̃����_�����O
      */
     MstCategoryController.renderRow = function (_id, res) {
         Category.model.findById(_id || null).exec().onResolve(function (err, result) {
@@ -88,12 +85,10 @@ var MstCategoryController = (function () {
                     'doc': doc
                 }
             });
-        }).onReject(function (err) {
-            res.send('rejected.');
-        });
+        }).onReject(function (err) { res.send('rejected.'); });
     };
     /**
-     * １行の編集用レンダリング
+     * �P�s�̕ҏW�p�����_�����O
      */
     MstCategoryController.renderFormRow = function (doc, res) {
         res.render('mstCategory/rowEdit', {
@@ -111,6 +106,6 @@ var MstCategoryController = (function () {
         execRow: '/mst/category/execRow'
     };
     return MstCategoryController;
-})();
+}());
 module.exports = MstCategoryController;
 //# sourceMappingURL=MstCategoryController.js.map

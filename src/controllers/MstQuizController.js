@@ -1,3 +1,4 @@
+"use strict";
 var Quiz = require('../models/Quiz');
 var Category = require('../models/Category');
 var Pager = require('../lib/Pager');
@@ -32,18 +33,16 @@ var MstQuizController = (function () {
         });
     };
     /**
-     * 編集用フォームのレンダリング
+     * �ҏW�p�t�H�[���̃����_�����O
      */
     MstQuizController.formRow = function (req, res) {
         Quiz.model.findById(req.params._id || null).populate('categories').exec().onResolve(function (err, result) {
             var doc = result || Quiz.createDocument();
             MstQuizController.renderFormRow(doc, res);
-        }).onReject(function (err) {
-            res.send('rejected.');
-        });
+        }).onReject(function (err) { res.send('rejected.'); });
     };
     /**
-     * 確定ボタン押下時処理
+     * �m���{�^������������
      */
     MstQuizController.execRow = function (req, res) {
         Quiz.model.findById(req.body._id || null).populate('categories').exec().onResolve(function (err, result) {
@@ -60,12 +59,10 @@ var MstQuizController = (function () {
                     MstQuizController.renderRow(savedResult._id, res);
                 }
             });
-        }).onReject(function (err) {
-            res.send('rejected.');
-        });
+        }).onReject(function (err) { res.send('rejected.'); });
     };
     /**
-     * 削除ボタン押下時処理
+     * �폜�{�^������������
      */
     MstQuizController.deleteRow = function (req, res) {
         Quiz.model.findById(req.params._id).exec().onResolve(function (err, result) {
@@ -77,13 +74,13 @@ var MstQuizController = (function () {
         });
     };
     /**
-     * 取消ボタン押下時処理
+     * �����{�^������������
      */
     MstQuizController.cancelRow = function (req, res) {
         MstQuizController.renderRow(req.params._id, res);
     };
     /**
-     * １行のレンダリング
+     * �P�s�̃����_�����O
      */
     MstQuizController.renderRow = function (_id, res) {
         Quiz.model.findById(_id || null).populate({ path: 'categories' }).exec().onResolve(function (err, result) {
@@ -93,12 +90,10 @@ var MstQuizController = (function () {
                     'doc': doc
                 }
             });
-        }).onReject(function (err) {
-            res.send('rejected.');
-        });
+        }).onReject(function (err) { res.send('rejected.'); });
     };
     /**
-     * １行の編集用レンダリング
+     * �P�s�̕ҏW�p�����_�����O
      */
     MstQuizController.renderFormRow = function (doc, res) {
         Category.model.find({}).exec(function (err, categories) {
@@ -122,6 +117,6 @@ var MstQuizController = (function () {
         execRow: '/mst/quiz/execRow'
     };
     return MstQuizController;
-})();
+}());
 module.exports = MstQuizController;
 //# sourceMappingURL=MstQuizController.js.map
