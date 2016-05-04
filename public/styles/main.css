@@ -43,3 +43,8 @@ li.choice:nth-child(even) { background: #f1dbe4; }
 
 /* panel-collapse */
 .panel-collapse>.panel-heading { cursor: pointer; }
+
+/* navbar */
+.navbar-form .form-group {
+    display: block;
+}
