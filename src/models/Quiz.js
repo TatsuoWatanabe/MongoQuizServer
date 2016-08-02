@@ -74,9 +74,20 @@ var Quiz = (function (_super) {
         var pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // And search pattern
         var regExp = RegExp(pattern, 'i');
         var query = {
-            '$or': [
+            $or: [
                 { body_ja: regExp },
-                { body_en: regExp }
+                { body_en: regExp },
+                { explanation_ja: regExp },
+                { explanation_en: regExp },
+                { choices: {
+                        $elemMatch: {
+                            $or: [
+                                { body_ja: regExp },
+                                { body_en: regExp }
+                            ]
+                        }
+                    }
+                }
             ]
         };
         return query;

@@ -33,7 +33,7 @@ var MstQuizController = (function () {
         });
     };
     /**
-     * �ҏW�p�t�H�[���̃����_�����O
+     * render for edit form.
      */
     MstQuizController.formRow = function (req, res) {
         Quiz.model.findById(req.params._id || null).populate('categories').exec().onResolve(function (err, result) {
@@ -42,7 +42,7 @@ var MstQuizController = (function () {
         }).onReject(function (err) { res.send('rejected.'); });
     };
     /**
-     * �m���{�^������������
+     * execute the received edited data.
      */
     MstQuizController.execRow = function (req, res) {
         Quiz.model.findById(req.body._id || null).populate('categories').exec().onResolve(function (err, result) {
@@ -62,7 +62,7 @@ var MstQuizController = (function () {
         }).onReject(function (err) { res.send('rejected.'); });
     };
     /**
-     * �폜�{�^������������
+     * delete a quiz data.
      */
     MstQuizController.deleteRow = function (req, res) {
         Quiz.model.findById(req.params._id).exec().onResolve(function (err, result) {
@@ -74,13 +74,13 @@ var MstQuizController = (function () {
         });
     };
     /**
-     * �����{�^������������
+     * cancel editing. response a row for view.
      */
     MstQuizController.cancelRow = function (req, res) {
         MstQuizController.renderRow(req.params._id, res);
     };
     /**
-     * �P�s�̃����_�����O
+     * render a row.
      */
     MstQuizController.renderRow = function (_id, res) {
         Quiz.model.findById(_id || null).populate({ path: 'categories' }).exec().onResolve(function (err, result) {
@@ -93,7 +93,7 @@ var MstQuizController = (function () {
         }).onReject(function (err) { res.send('rejected.'); });
     };
     /**
-     * �P�s�̕ҏW�p�����_�����O
+     * render a row for edit form.
      */
     MstQuizController.renderFormRow = function (doc, res) {
         Category.model.find({}).exec(function (err, categories) {

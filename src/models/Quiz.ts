@@ -1,4 +1,4 @@
-﻿import mongoose      = require('mongoose');
+import mongoose      = require('mongoose');
 import Routes        = require('../Routes');
 import ModelBase     = require('./ModelBase');
 const mongoosePaginate = require('mongoose-paginate');
@@ -90,9 +90,20 @@ class Quiz extends ModelBase {
     const pattern = searchWords.replace(/(\S+)\s*/g, '(?=.*$1)'); // And search pattern
     const regExp  = RegExp(pattern, 'i');
     const query   = {
-      '$or': [
+      $or: [
         { body_ja: regExp },
-        { body_en: regExp }
+        { body_en: regExp },
+        { explanation_ja: regExp },
+        { explanation_en: regExp },
+        { choices: {
+            $elemMatch: {
+              $or: [
+                { body_ja: regExp },
+                { body_en: regExp }
+              ]
+            }
+          }
+        }
       ]
     };
     return query;
