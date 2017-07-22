@@ -191,6 +191,11 @@ ModelManifest.xml
 # add
 .ntvs_analysis.dat
 .DS_Store
+
+src/*.js
+src/*.js.map
+app.js
+app.js.map
 memo
 MongoQuizServer.njsproj
 MongoQuizServer.sln

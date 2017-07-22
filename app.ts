@@ -17,7 +17,7 @@ app.use(bodyParser.json());                         // parse application/json
                               || process.env.MONGO_LOCAL_URI;
   mongoose.connect(connectString, (err) => {
     if (err) { console.log(err); }
-    else     { console.log('connected to database ' + connectString + '.'); }
+    else     { console.log('connected to database.'); }
   });
 })();
 // ------------------------------------------------
@@ -25,7 +25,7 @@ app.use(bodyParser.json());                         // parse application/json
 // --- express session ----------------------------
 (() => {
   app.use(session({
-    secret           : 'aaaa',
+    secret           : process.env.SESSION_SECRET,
     saveUninitialized: true,
     resave           : true,
     store            : new MongoStore({ mongooseConnection: mongoose.connection }),
